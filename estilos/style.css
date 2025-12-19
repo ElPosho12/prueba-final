@@ -1,0 +1,498 @@
+body{
+  background:#222;
+  color:#d8a415;
+  font-family:"Montserrat", sans-serif;
+  text-align: center;
+  margin:0;
+}
+
+header{
+  text-align:center;
+  padding:20px;
+  background:#222;
+}
+
+.category{
+  background:#333;
+  padding:25px;
+  border-radius:10px;
+  margin:20px;
+}
+
+.options-grid{
+  display: flex;
+  flex-wrap: wrap;          /* Permite bajar elementos de línea */
+  justify-content: center;  /* Centra horizontalmente cada fila */
+  gap: 50px;                /* Ajusta el espacio entre opciones */
+  margin-top: 15px;
+  
+}
+
+.card-option{
+  background:#444;
+  border:2px solid #d8a415;
+  border-radius:10px;
+  padding:25px 90px;
+  text-align:center;
+  cursor:pointer;
+  transition: transform .15s, background .15s, border-color .15s;
+}
+
+.card-option.selected{
+  background:#d8a415;
+  color:#222;
+  border-color:#ffdd55;
+  transform: scale(1.05);
+}
+
+.card-option:hover{
+  transform: scale(1.07);
+  box-shadow: 0 12px 12px rgba(0,0,0,0.25);
+}
+
+.card-option input{
+  display:none;
+}
+
+.actions{
+  text-align:center;
+  margin-top:20px;
+}
+
+button{
+  display:inline-block;
+  background:#d8a415;
+  border: none;
+  padding:12px 18px;
+  border-radius:25px;
+  color:#222;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+button:hover{
+transform: scale(1.2);
+box-shadow: 0 12px 12px rgba(0,0,0,0.25);
+}
+footer {
+  max-width: 960px;
+  margin: 100px auto;
+  padding: 0 16px;
+  color: #666;
+  text-align: center;
+  font-size: 15px;
+
+}
+
+.admin{
+  display: inline-block;
+  padding: 8px;
+  border: 2px solid#d8a415;
+  border-radius: 20px;
+  background-color:  #a07a10;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin:hover{
+  transform: scale(1.1);
+  box-shadow: 0 12px 12px rgba(0,0,0,0.25);
+}
+
+/* ============================
+      NOTIFICACIONES DESLIZABLES
+   ============================ */
+
+#notifyBox {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 90%;
+  padding: 15px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  text-align: center;
+  transition: top 0.4s ease;
+  z-index: 9999;
+  opacity: 0.95;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Tipos */
+.notify-error {
+  background: #d9534f;
+}
+
+.notify-success {
+  background: #5cb85c;
+}
+
+/* Estado visible */
+.notify-show {
+  top: 20px !important;
+}
+
+.option-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 2px solid rgba(216,164,21,0.15);
+  transition: transform .2s;
+}
+
+.card-option.selected .option-img {
+  transform: scale(1.05);
+  border-color: #ffdd55;
+}
+
+/* ----- ANIMACIÓN DE SLIDE ----- */
+
+.slide-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    width: 250px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 9999;
+}
+
+.slide-image.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.vote-info {
+  font-size: 14px;
+  opacity: .8;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* --- SLIDE INICIAL (NOMBRE → VOTACIÓN) --- */
+.start-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.start-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.start-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.start-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* --- SLIDE NORMAL ENTRE CATEGORÍAS --- */
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.clip-button {
+  margin-top: 6px;
+  padding: 8px 14px;
+  background: #d8a415;
+  border: none;
+  border-radius: 6px;
+  color: #1b1b1b;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.clip-button:hover {
+  background: #f8c531;
+  transform: scale(1.05);
+}
+
+.clip-button:active {
+  transform: scale(0.97);
+}
+
+.card-clip {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px 50px;
+}
+
+.clip-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #d8a415;
+}
+
+.clip-link {
+  color: #8ab4ff;
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+.vote-info {
+  text-align: center;
+  margin: 10px 0 25px 0;
+  font-size: 19px;
+  color: #d8a415;
+  font-weight: 500;
+}
+
+
+.category-subtitle {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #d8a415;
+  font-weight: 500;
+}
+
+.option-card.selected .option-title {
+  color: #1b1b1b; /* negro */
+  font-weight: 300;
+}
+
+.card-option.selected .clip-title {
+  color: #1b1b1b;
+  font-weight: 700;
+}
+
+.card-option.selected span {
+  color: #1b1b1b;
+  font-weight: 700;
+}
+
+/* Cambiar botón Ver clip a negro cuando está seleccionado */
+.card-option.selected .clip-button {
+  background: #222 !important;
+  color: #d8a415 !important;
+}
+
+/* ===========================
+   PANTALLA FINAL (overlay)
+   =========================== */
+
+#final-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.65);
+  z-index: 9999;
+
+  /* clave: el overlay NO captura los clicks; solo el contenido lo hará */
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+/* oculto por defecto (no ocupa ni bloquea) */
+.final-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* cuando queremos mostrarlo: overlay visible pero sigue sin bloquear clics abajo */
+#final-screen.final-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none; /* importante: overlay sigue sin capturar clicks */
+}
+
+/* el contenido SÍ captura los clicks (botones internos, reproducción, etc.) */
+#final-screen .final-content {
+  pointer-events: auto; /* el único elemento que recibe interacciones */
+  text-align: center;
+  transform: scale(0.85);
+  animation: zoomIn 0.45s ease forwards;
+  color: #fff;
+}
+
+/* zoom */
+@keyframes zoomIn {
+  to { transform: scale(1); }
+}
+
+/* SVG / check styling (puedes ajustar tamaño) */
+.check-wrapper { width: 140px; height: 140px; margin: 0 auto 16px; }
+.check-circle-bg { fill: #d8a415; }
+.check-path {
+  stroke: #222;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: drawCheck 0.6s ease forwards 0.25s;
+}
+@keyframes drawCheck { to { stroke-dashoffset: 0; } }
+
+.final-title {
+  font-size: 28px;
+  margin-top: 6px;
+  color: #d8a415;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards 0.6s;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+.final-content {
+  pointer-events: auto;
+  transition: opacity 1s ease;
+}
+
+.final-content.fade-out {
+  opacity: 0;
+}
+
+/* Texto final fijo */
+.final-thanks {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 24px;
+  color: #d8a415;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.final-thanks.show {
+  opacity: 1;
+}
+
+.footer-button{
+  font-family:"Montserrat", sans-serif;
+  border: 4px, solid #a07a10 ;
+}
+
+.footer-button:hover{
+border: solid #c4a03d;
+background-color: #eecb4a;
+box-shadow: 0, 12px, 12px rgba(0,0,0,0.25);
+}
+
+.lyrics-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lyrics-modal.final-visible {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.lyrics-content {
+  background: #333;
+  color: #d8a415;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  text-align: left;
+  position: relative;
+}
+
+.close-lyrics {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: 1px solid #d8a415;
+  border-radius: 15px;
+  color: #d8a415;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.lyrics-content pre {
+  white-space: pre-wrap;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.4;
+}
+
+.song-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 6px;
+}
+
+/* =========================
+   BOTONES DENTRO DE CARD SELECCIONADA
+   ========================= */
+.card-option.selected button,
+.card-option.selected .clip-button,
+.card-option.selected .play-btn {
+  background-color: #222 !important;
+  color: #d8a415 !important;
+}
+
+/* Hover mientras está seleccionada */
+.card-option.selected button:hover,
+.card-option.selected .clip-button:hover,
+.card-option.selected .play-btn:hover {
+  background-color: #222 !important;
+  color: #d8a415 !important;
+  transform: scale(1.05);
+}
+
+.play-btn,
+.lyrics-button {
+  border-radius: 8px;
+  height: 45px;
+}

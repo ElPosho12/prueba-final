@@ -1,0 +1,292 @@
+body {
+  background: #222;
+  color: #d8a415;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  padding: 30px 20px;
+  background: #222;
+  border-bottom: 1px solid #444;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+header p {
+  margin-top: 5px;
+  color: #c49a2c;
+}
+
+main {
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ---- TARJETAS ---- */
+.card {
+  background: #333;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.card h2 {
+  margin-bottom: 20px;
+}
+
+/* ---- LOGIN ---- */
+#auth input {
+  width: 90%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 25px;
+  border: 1px solid #d8a415;
+  background: #222;
+  color: #d8a415;
+}
+
+button {
+  display: inline-block;
+  background: #d8a415;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: #222;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover {
+  background: #eecb4a;
+  transform: scale(1.2);
+}
+
+/* ---- RESULTADOS ---- */
+
+.admin-bar {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.logout-btn {
+  background: #b12c2c;
+  color: white;
+  border-radius: 8px;
+}
+
+.logout-btn:hover {
+  background: #d83a3a;
+}
+
+.results-title {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ---- CATEGORÍAS EN CARDS ---- */
+
+.category {
+  background: #333;
+  border: 2px solid #d8a415;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.category h3 {
+  margin: 0 0 15px;
+  text-align: center;
+  color: #ffdd55;
+  font-size: 20px;
+  border-bottom: 1px solid #555;
+  padding-bottom: 10px;
+}
+
+.category ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.category li {
+  background: #444;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-left: 4px solid #d8a415;
+  color: #f1f1f1;
+  font-size: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  margin-top: 60px;
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  padding-bottom: 50px;
+}
+
+.admin{
+  display: inline-block;
+  padding: 8px;
+  border: 2px solid#d8a415;
+  border-radius: 20px;
+  background-color:  #a07a10;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin:hover{
+  transform: scale(1.1);
+  box-shadow: 0 12px 12px rgba(0,0,0,0.25);
+}
+
+.voter-box {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #222;
+  border-radius: 10px;
+  border-left: 4px solid #d8a415;
+}
+
+.voter-box h3 {
+  margin-bottom: 8px;
+  color: #ffd85e;
+}
+
+/* ============================================
+   CARRUSEL ADMIN
+   ============================================ */
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.carousel-window {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  background: #d8a415;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.carousel-btn.left {
+  left: -20px;
+}
+
+.carousel-btn.right {
+  right: -20px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 8px;
+}
+
+.carousel-dots span {
+  width: 12px;
+  height: 12px;
+  background: #555;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carousel-dots .active {
+  background: #d8a415;
+}
+
+/* ================================
+     SLIDE ENTRE LOGIN Y RESULTADOS
+=================================== */
+
+.slide-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estados base */
+#auth, #results {
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Oculto fuera de pantalla hacia la derecha */
+.slide-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* Oculto fuera de pantalla hacia la izquierda */
+.slide-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Visible en pantalla */
+.slide-center {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.footer-button {
+  font-family:"Montserrat", sans-serif;
+  padding: 12px 16px;
+  background-color: #d8a415;
+  border:4px, solid #a07a10 ;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.footer-button:hover {
+  border: solid #c4a03d;
+  background-color: #eecb4a;
+  box-shadow: 0 12px 12px rgba(0,0,0,0.25);
+}

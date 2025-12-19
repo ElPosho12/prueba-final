@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Monkey Awards</title>
+  <link rel="stylesheet" href="estilos/styles.css">
+  <link rel="icon" type="image/png" href="fotos/file2.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+
+</head>
+
+<body>
+
+<header>
+  <h1>MONKEY AWARDS — PANEL ADMIN</h1>
+  <p>Visualización en tiempo real de los votos</p>
+</header>
+
+<main class="slide-container">
+
+  <!-- LOGIN -->
+  <section id="auth" class="card slide-center">
+    <h2>Iniciar sesión</h2>
+
+    <input id="email" type="email" placeholder="Email del administrador">
+    <input id="password" type="password" placeholder="Contraseña">
+
+    <button id="loginBtn">Ingresar</button>
+    <p id="authMsg"></p>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section id="results" class="card slide-right">
+      
+    <div class="admin-bar">
+        <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+    </div>
+
+    <h2 class="results-title">Resultados de votación</h2>
+
+    <div class="carousel-wrapper">
+
+      <button class="carousel-btn left" id="prevBtn">&#10094;</button>
+
+      <div class="carousel-window">
+          <div class="carousel-track" id="carouselTrack">
+              <!-- JS inserta las slides acá -->
+          </div>
+      </div>
+
+      <button class="carousel-btn right" id="nextBtn">&#10095;</button>
+
+    </div>
+
+    <div id="carouselDots" class="carousel-dots"></div>
+
+    <audio id="carousel-move-sound" src="sonidos/slide2.wav" preload="auto"></audio>
+    <audio id="carousel-hover-sound" src="sonidos/hover.wav" preload="auto"></audio>
+
+  </section>
+</main>
+
+<footer>
+  <button id="footerBtn" class="footer-button">Volver a votaciones</button>
+  <audio id="footer-sound" src="sonidos/hover.wav" preload="auto"></audio>
+  <audio id="click-sound" src="sonidos/footer.mp3" preload="auto"></audio>
+</footer>
+
+
+<script type="module" src="javas/admin.js"></script>
+<script type="module" src="javas/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Votación - Monkey Awards</title>
+  <link rel="stylesheet" href="estilos/style.css">
+  <link rel="icon" type="image/png" href="fotos/file.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+</head>
+
+<body>
+
+  <!-- NOTIFICACIÓN -->
+  <div id="notifyBox"></div>
+
+  <header>
+    <h1>🐒 MONKEY AWARDS 🐒</h1>
+    <h3>Votar la cantidad de nominados que se especifique en la terna</h3>
+  </header>
+
+  <main>
+    <!-- PASO 1: INGRESO DE NOMBRE -->
+    <div id="nameStep">
+      <h2>Ingresa tu nombre</h2>
+      <input type="text" id="userName" placeholder="Tu nombre..." />
+      <button id="startBtn">Comenzar</button>
+    </div>
+
+    <!-- PASO 2: VOTACIÓN -->
+    <div id="votingStep" style="display:none;">
+      <div id="categoryContainer"></div>
+      <button id="nextBtn">Siguiente</button>
+    </div>
+
+    <!-- PANTALLA FINAL -->
+    <div id="final-screen" class="final-hidden">
+      <div class="final-content" role="dialog" aria-hidden="true">
+        <div class="check-wrapper" aria-hidden="true">
+          <svg class="check-svg" viewBox="0 0 52 52" width="140" height="140" role="img" aria-hidden="true">
+            <circle class="check-circle-bg" cx="26" cy="26" r="25"/>
+            <path class="check-path" d="M14 27 L22 35 L38 19"/>
+          </svg>
+        </div>
+        <h2 class="final-title">¡Gracias por votar!</h2>
+      </div>
+    </div>
+
+    <div id="lyricsModal" class="lyrics-modal final-hidden">
+  <div class="lyrics-content">
+    <button id="closeLyrics" class="close-lyrics">✖</button>
+    <h3 id="lyricsTitle">Título de la canción</h3>
+    <pre id="lyricsText">Aquí aparecerá la letra...</pre>
+  </div>
+</div>
+
+
+
+    <!-- AUDIOS -->
+    <audio id="success-audio" src="sonidos/final.mp3" preload="auto"></audio>
+    <audio id="error-audio" src="sonidos/error.mp3" preload="auto"></audio>
+    <audio id="next-category-sound" src="sonidos/slide.mp3" preload="auto"></audio>
+    <audio id="select-sound" src="sonidos/click.mp3" preload="auto"></audio>
+    
+  </main>
+
+  <footer>
+    <button id="footerBtn" class="footer-button">Entrar al panel administrativo</button>
+    <audio id="footer-sound" src="sonidos/hover.wav" preload="auto"></audio>
+    <audio id="footer-click" src="sonidos/footer.mp3" preload="auto"></audio>
+  </footer>
+
+  <!-- SCRIPT PRINCIPAL -->
+  <script type="module" src="javas/app.js"></script>
+
+</body>
+</html>
